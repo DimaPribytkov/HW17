@@ -1,15 +1,22 @@
-public class Wine {
-    String titleWine;
-    String brandNameWine;
-    String country;
-    String dateBottling;
-    String description;
+import java.time.LocalDate;
+import java.time.Period;
 
-    public Wine(String titleWine, String brandNameWine, String country, String dateBottling, String description) {
+public class Wine {
+    public String titleWine;
+    private String brandNameWine;
+    private String country;
+    private LocalDate date;
+    private String description;
+
+    public Wine (){
+    }
+
+    public Wine(String titleWine, String brandNameWine, String country,
+                LocalDate date, String description) {
         this.titleWine = titleWine;
         this.brandNameWine = brandNameWine;
         this.country = country;
-        this.dateBottling = dateBottling;
+        this.date = date;
         this.description = description;
     }
 
@@ -25,8 +32,8 @@ public class Wine {
         return country;
     }
 
-    public String getDateBottling() {
-        return dateBottling;
+    public LocalDate getDate() {
+        return date;
     }
 
     public String getDescription() {
@@ -45,11 +52,16 @@ public class Wine {
         this.country = country;
     }
 
-    public void setDateBottling(String dateBottling) {
-        this.dateBottling = dateBottling;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public void winePeriod(LocalDate now){
+        int years = Period.between(date, now).getYears();
+        System.out.println("Выдержка вина составляет " + years);
+
     }
 }
